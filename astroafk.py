@@ -44,8 +44,8 @@ class AstroAfkMod(loader.Module):
 		user = await self._client(GetFullUserRequest(user_id))
 		
 		# Сохраняем оригинальное имя
-		original_name = user.user.first_name
-		original_last_name = user.user.last_name or ""
+		original_name = user.users[0].first_name
+		original_last_name = user.users[0].last_name or ""
 		
 		self._db.set(__name__, "afk", True)
 		self._db.set(__name__, "gone", time.time())
